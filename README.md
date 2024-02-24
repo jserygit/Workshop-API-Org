@@ -58,6 +58,7 @@ import requests
 resultat = requests.get('https://tekme.eu/api/profile/moulinettes', headers={'Authorization': 'TOKEN-TEKME'})
 ```
 
+effectuez un print de `resultat` afin de verifié le resultat de la requete
 
 
 
