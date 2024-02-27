@@ -65,3 +65,9 @@ Pour vérifier le résultat, on ajoute au path de notre api `/mouli` de la mani�
 async def root():
     return resultat.json()
 ```
+
+Effectuer une requête a l'aide de postman :
+![image](https://github.com/jserygit/Workshop-API-Org/assets/145333959/c11aef92-70a1-4e97-b0dc-f22396ad49ca)
+
+
+
