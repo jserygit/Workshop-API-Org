@@ -132,3 +132,29 @@ def write_issue(issue, skill, index):
 ```
 
 Faite un `cat` de `/tmp/mouli/data` pour vérifier si le parsing est correcte
+
+Nous avons désormais notre API nous permettant de récupérer les données de la mouli
+## Étape 4 Configuration de Github CLI :
+
+
+Créer un Personnal Access Token depuis les `developer settings` dans les paramètres 
+
+Lancer la commande suivante et suivait les instruction :
+
+``` bash
+gh auth login
+```
+
+une fois cela fait prenez le temps de jetez un coup d’œil au fonctionnement de Github client
+
+## Étape 5 Listée les issues d'un répo :
+
+Créer un fichier nommé `ManageIssue.sh`
+
+`ManageIssue.sh` s’exécutera de la manière suivante :
+
+```bash
+./ManageIssue [NomDuProjet]
+```
+
+Nous allons commencé par envoyé une requête a notre api afin d'obtenir les données traité plus tôt 
