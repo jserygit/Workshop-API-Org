@@ -73,7 +73,7 @@ Effectuer une requête a l'aide de postman :
 ## Étape 3 Traitement des données :
 
 Il nous faut maintenant être capable de récupéré les information d'un projet.
-pour cela nous allons faire en sorte de pouvoir mettre le nom d'un projet dans le path de l'api afin qu'elle nous sorte les info de celui-ci collé le code suivant dans `main.py`:
+pour cela nous allons faire en sorte de pouvoir mettre le nom d'un projet dans le path de l'api afin qu'elle nous sorte les info de celui-ci, collé le code suivant dans `main.py`:
 
 ```python
 @app.get("/{item_name}")
@@ -96,4 +96,20 @@ async def read_item(item_name: str):
             issue.close()
             return 0
     return 84
+```
+
+Complété le code de `get_failed_test()` et de `write_issue()` appelé dans `get_failed_test()` :
+```python
+def get_failed_test(issue, i, passed, index):
+    for skill in i.get('trace').get('skills'):
+        ## on attribue a chaque skills un numero selon leur ordre d'apparition
+        ## afin de les retrouver plus facilement
+        index += 1
+        ## on parcours les tests de chaque skills pour voir si ils sont tous passés
+        
+            ## si un test n'est pas passé, on passe la variable passed a False
+            
+        if passed == False:
+            write_issue(issue, skill, index)
+        passed = True
 ```
