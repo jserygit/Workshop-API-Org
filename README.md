@@ -70,4 +70,30 @@ Effectuer une requête a l'aide de postman :
 ![image](https://github.com/jserygit/Workshop-API-Org/assets/145333959/c11aef92-70a1-4e97-b0dc-f22396ad49ca)
 
 
+## Étape 3 Traitement des données :
 
+Il nous faut maintenant être capable de récupéré les information d'un projet.
+pour cela nous allons faire en sorte de pouvoir mettre le nom d'un projet dans le path de l'api afin qu'elle nous sorte les info de celui-ci collé le code suivant dans `main.py`:
+
+```python
+@app.get("/{item_name}")
+async def read_item(item_name: str):
+    passed = True
+    index = 0
+    os.makedirs('/tmp/mouli', exist_ok=True)
+    ##création des fichiers pour les issues et le repo
+    issue = open('/tmp/mouli/data.txt', "w")
+    repo = open('/tmp/mouli/repo.txt', "w")
+
+    ##on parcours jobs pour trouver le projet
+    ##on regarde si le projet est celui qu'on cherche
+    ##si oui on ecrit l'url du repo dans le fichier repo.txt
+    ##on parcours les skills pour récupérer les tests qui sont pas passés
+    for i in resultat.json().get('jobs'):
+        if i.get('project') == item_name:
+            repo.write(i.get('trace').get('githubUrl'))
+            get_failed_test(issue, i, passed, index)
+            issue.close()
+            return 0
+    return 84
+```
