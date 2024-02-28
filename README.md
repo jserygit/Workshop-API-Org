@@ -2,7 +2,7 @@
 
 Ce workshop vous apprendra a crée une api avec Fast-api puis a la testé avec POSTMAN.
 
-L'API crée vous permettra de gérer les données de la moulinette afin de crée une liste de tâches à faire pour chaque Projet EPITECH
+L'API crée vous permettra de gérer les données de la moulinette afin de créer une liste de tâches à faire pour chaque Projet EPITECH
 
 Documentation Github Client:
 https://cli.github.com/manual/
@@ -30,7 +30,7 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-return {"message": "Hello World"}
+    return {"message": "Hello World"}
 ```
 
 Puis exécuter la commande suivante dans votre terminal :
@@ -39,7 +39,7 @@ Puis exécuter la commande suivante dans votre terminal :
 uvicorn main:app --reload
 ```
 
-Une fois l'API lancée, vous pouvez tester son bon fonctionnement de la manière suivante grâce a POSTMAN en utilisant le lien sur lequel votre api se host :
+Une fois l'API lancée, vous pouvez tester son bon fonctionnement de la manière suivante grâce à POSTMAN en utilisant le lien sur lequel votre api se host :
 
 ![image](https://github.com/jserygit/Workshop-API-Org/assets/145333959/f244956a-587e-4c89-99d0-63f53b459785)
 
@@ -49,7 +49,7 @@ Si tout se passe bien vous devriez obtenir cela :
 
 ## Étape 2 Récupérer les informations de la moulinette :
 
-Pour cela il va nous falloir envoyer une requête a l'api de TekMe pour cela nous allons d'en un premier temps importé la librairie python `requests` dans notre `main.py`
+Pour cela, il va nous falloir envoyer une requête à l'api de TekMe , nous devons d'en un premier temps importé la librairie python `requests` dans notre `main.py`
 Puis effectué la ligne suivante dans laquelle il vous faut remplacer `TOKEN-TEKME` par votre token que vous devrez trouver sur tekme sur la page des moulinette en faisant F12 en cliquant sur l'onglet réseau :
 
 ``` python
@@ -66,14 +66,14 @@ async def root():
     return resultat.json()
 ```
 
-Effectuer une requête a l'aide de postman :
+Effectuer une requête à l'aide de postman :
 ![image](https://github.com/jserygit/Workshop-API-Org/assets/145333959/c11aef92-70a1-4e97-b0dc-f22396ad49ca)
 
 
 ## Étape 3 Traitement des données :
 
-Il nous faut maintenant être capable de récupéré les information d'un projet.
-pour cela nous allons faire en sorte de pouvoir mettre le nom d'un projet dans le path de l'api afin qu'elle nous sorte les info de celui-ci, collé le code suivant dans `main.py`:
+Il nous faut maintenant être capable de récupérer les informations d'un projet.
+Pour cela, nous allons faire en sorte de pouvoir mettre le nom d'un projet dans le path de l'api afin qu'elle nous sorte les infos de celui-ci, collé le code suivant dans `main.py`:
 
 ```python
 @app.get("/{item_name}")
@@ -87,8 +87,8 @@ async def read_item(item_name: str):
 
     ##on parcours jobs pour trouver le projet
     ##on regarde si le projet est celui qu'on cherche
-    ##si oui on ecrit l'url du repo dans le fichier repo.txt
-    ##on parcours les skills pour récupérer les tests qui sont pas passés
+    ##si oui on écrit l'URL du repo dans le fichier repo.txt
+    ##on parcours les skills pour récupérer les tests qui ne sont pas passés
     for i in resultat.json().get('jobs'):
         if i.get('project') == item_name:
             repo.write(i.get('trace').get('githubUrl'))
@@ -105,10 +105,12 @@ def get_failed_test(issue, i, passed, index):
         ## on attribue a chaque skills un numero selon leur ordre d'apparition
         ## afin de les retrouver plus facilement
         index += 1
-        ## on parcours les tests de chaque skills pour voir si ils sont tous passés
+        ## on parcourt les tests de chaque skills pour voir si ils sont tous passés
+        ## à compléter
         
             ## si un test n'est pas passé, on passe la variable passed a False
-            
+            ## à compléter
+
         if passed == False:
             write_issue(issue, skill, index)
         passed = True
