@@ -130,3 +130,5 @@ def write_issue(issue, skill, index):
         ## X est le numero du test
     pass
 ```
+
+Faite un `cat` de `/tmp/mouli/data` pour vérifier si le parsing est correcte
