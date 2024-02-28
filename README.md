@@ -113,3 +113,18 @@ def get_failed_test(issue, i, passed, index):
             write_issue(issue, skill, index)
         passed = True
 ```
+
+```python
+def write_issue(issue, skill, index):
+    ## ecrit dans le fichier issue.txt le nom du skill et le numero du skill
+    ## pour chaque skill qui n'a pas passé les tests
+    issue.write("Skill " + str(index) + " : " + skill.get('name') + "\n")
+    for test in skill.get('tests'):
+        if test.get('comment') == "PASSED":
+            continue
+        ## ecrit dans le fichier issue.txt le nom du test et le commentaire du test
+        ## dans le format suivant :
+        ## "TX : Nom du test : commentaire du test"
+        ## X est le numero du test
+    pass
+```
