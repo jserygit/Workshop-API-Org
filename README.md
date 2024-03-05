@@ -145,7 +145,7 @@ Lancer la commande suivante et suivait les instruction :
 gh auth login
 ```
 
-une fois cela fait prenez le temps de jetez un coup d’œil au fonctionnement de Github client
+une fois, cela fait prenez le temps de jeter un coup d’œil au fonctionnement de Github client.
 
 ## Étape 5 Listée les issues d'un répo :
 
@@ -157,4 +157,85 @@ Créer un fichier nommé `ManageIssue.sh`
 ./ManageIssue [NomDuProjet]
 ```
 
-Nous allons commencé par envoyé une requête a notre api afin d'obtenir les données traité plus tôt 
+Envoyer, une requête a notre api dans `ManageIssue.sh` afin d'obtenir les données traitées plus tôt 
+
+```sh
+args=("$@")
+## on récupère les différents arguments.
+
+repo=${args[0]}
+## on récupère le premier argument soit [NomDuProjet]
+
+title=("")
+
+i = 0
+
+sleep 1
+
+## on effectue une request a notre api
+curl --location --request GET "http://XXX.X.X.X:XXXX/items/$repo" --header 'Content-Type: application/json'
+```
+
+On a maintenant nos données dans `/tmp/mouli/data.txt` et dans `/tmp/mouli/repo.txt`
+Grace a l'URL enregistré dans `/tmp/mouli/repo.txt` vous devez a l'aide github CLI récupéré la liste des issue dans un répo. Vous devez obtenir cela:
+
+```sh
+There are no open issues in EpitechPromo20XX/B-PSU-200-MPL-2-1-minishell1-prenom.nom
+
+```
+
+Créer manuellement une issue dans le repo puis relancer la commande
+
+```sh
+Showing 1 of 1 open issue in EpitechPromo20XX/B-PSU-200-MPL-2-1-minishell1-prenom.nom
+
+#68  test    less than a minute ago
+```
+
+Pour nous rendre la tache plus facile, nous allons faire en sorte de récupéré uniquement les numéros des issues sous forme de JSON grâce au flag `--json number` qu'on va venir ajouter a la commande ce qui va nous permettre d'obtenir le résultat suivant :
+
+```JSON
+[
+	{
+		"number": 68
+	}
+]
+```
+
+## Étape 6 Création d'issues pour un répo avec Github Client:
+
+A l'aide de la commande Github CLI `gh issue create` crée une issue dans le repo de votre choix, vous devriez obtenir le message suivant :
+
+```sh
+
+Creating issue in EpitechPromo2028/B-PSU-200-MPL-2-1-minishell1-prenom.nom
+
+```
+
+## Étape 7 A vous de jouer :
+
+Vous disposez maintenant de toutes les clés afin de pouvoir compléter le fichier `ManageIssue.sh` bien évidemment si vous préférez, vous pouvez le faire dans un autre langage 
+
+Voici un exemple de ce que vous pouvez obtenir :
+
+```sh
+0 EpitechPromo2028/B-PSU-100-MPL-1-1-myls-julien.sery
+✓ Closed issue #8 (06 - char device tests)
+✓ Closed issue #7 (05 - '-t' option tests)
+
+Creating issue in EpitechPromo2028/B-PSU-100-MPL-1-1-myls-julien.sery
+
+https://github.com/EpitechPromo2028/B-PSU-100-MPL-1-1-myls-julien.sery/issues/9
+
+Creating issue in EpitechPromo2028/B-PSU-100-MPL-1-1-myls-julien.sery
+
+https://github.com/EpitechPromo2028/B-PSU-100-MPL-1-1-myls-julien.sery/issues/10
+Issues posted successfully
+https://github.com/EpitechPromo2028/B-PSU-100-MPL-1-1-myls-julien.sery/
+```
+
+![Pasted image 20240305155007](https://github.com/jserygit/Workshop-API-Org/assets/145333959/9c762ea2-5edf-4ebc-a1b4-04d86b0af230)
+
+![Pasted image 20240305155040](https://github.com/jserygit/Workshop-API-Org/assets/145333959/c08ce68a-fd52-42a3-8b09-427025bcfde2)
+
+À vous de faire le vôtre et de le personnaliser à votre guise
