@@ -1,8 +1,8 @@
 # Découverte Fast-API et Github Client - Création d'une API et automatisation création d'issue github 
 
-Ce workshop vous apprendra a crée une api avec Fast-api puis a la testé avec POSTMAN.
+Ce workshop vous apprendra a créer une api avec Fast-api puis à la tester avec POSTMAN.
 
-L'API crée vous permettra de gérer les données de la moulinette afin de créer une liste de tâches à faire pour chaque Projet EPITECH
+L'API créee vous permettra de gérer les données de la moulinette afin de créer une liste de tâches à faire pour chaque Projet EPITECH
 
 Documentation Github Client:
 https://cli.github.com/manual/
@@ -173,11 +173,11 @@ i = 0
 sleep 1
 
 ## on effectue une request a notre api
-curl --location --request GET "http://XXX.X.X.X:XXXX/items/$repo" --header 'Content-Type: application/json'
+curl --location --request GET "http://XXX.X.X.X:XXXX/$repo" --header 'Content-Type: application/json'
 ```
 
 On a maintenant nos données dans `/tmp/mouli/data.txt` et dans `/tmp/mouli/repo.txt`
-Grace a l'URL enregistré dans `/tmp/mouli/repo.txt` vous devez a l'aide github CLI récupéré la liste des issue dans un répo. Vous devez obtenir cela:
+Grace a l'URL enregistré dans `/tmp/mouli/repo.txt` vous devez a l'aide github CLI récupéré la liste des issue dans un répo. Vous devriez obtenir cela si le repo ne possède aucune issue:
 
 ```sh
 There are no open issues in EpitechPromo20XX/B-PSU-200-MPL-2-1-minishell1-prenom.nom
