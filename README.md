@@ -212,6 +212,23 @@ Creating issue in EpitechPromo2028/B-PSU-200-MPL-2-1-minishell1-prenom.nom
 
 ```
 
+voici le code pour le parsing: 
+```sh
+while read -r line; do
+    if [ -z "$line" ] && [ "$i" -eq "1" ]; then
+        gh issue create --title "$title" --body "$(cat /tmp/mouli/tmp.txt)" --repo  $full_name
+        rm /tmp/mouli/tmp.txt
+        i=0
+    fi
+    if [ "$i" -eq "0" ] && [ ! -z "$line" ]; then
+        title=$line
+        i=1
+    else
+        echo "$line" >> /tmp/mouli/tmp.txt
+    fi
+done < /tmp/mouli/data.txt
+```
+
 ## Étape 7 A vous de jouer :
 
 Vous disposez maintenant de toutes les clés afin de pouvoir compléter le fichier `ManageIssue.sh` bien évidemment si vous préférez, vous pouvez le faire dans un autre langage 
